@@ -26,6 +26,10 @@ Construction detours are updated on the Open data portal every day at 3am and 3p
 
 ```{r loadPackages, echo=FALSE}
 library(dplyr)
+library(lubridate)
+library(readr)
+library(janitor)
+library(arrow)
 ```
 
 ### Source Functions
@@ -39,6 +43,7 @@ source("01_functions/download_data.R")
 ```{r setVariables, echo=FALSE}
 traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
 construction_detours_url <- "https://data.calgary.ca/resource/w8zq-79bq.csv"
+output_data_location <- "C:/_Data_Projects/selica/yyc_traffic_incidents/00_data/"
 ```
 
 ### Download Data
@@ -48,3 +53,39 @@ download_data(url = traffic_incidents_url, destfile = "00_data/traffic_incidents
 download_data(url = construction_detours_url, destfile = "00_data/construction_detours.csv")
 ```
 
+### Load Data
+
+```{r load_data}
+traffic_incidents_raw <- readr::read_csv("00_data/traffic_incidents.csv")
+construction_detours_raw <- readr::read_csv("00_data/construction_detours.csv")
+```
+
+```{r viewRawData}
+#View(traffic_incidents_raw)
+#View(construction_detours_raw)
+```
+
+## Data Wrangling
+```{r trafficIncidentsWrangling}
+traffic_incidents <- traffic_incidents_raw |> 
+    janitor::clean_names() |> 
+    mutate(
+    start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
+    modified_dt = lubridate::ymd_hms(modified_dt,tz = "Canada/Mountain"),
+        )
+```
+
+```{r constructionDetoursWrangling}
+construction_detours <- construction_detours_raw |> 
+    janitor::clean_names() |> 
+    mutate(
+    start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
+    end_dt = lubridate::ymd_hms(end_dt,tz = "Canada/Mountain")
+        )
+```
+
+# Write the Data to parquet files
+```{r writeData}
+arrow::write_parquet(traffic_incidents, paste0(output_data_location,"traffic_incidents.parquet"))
+arrow::write_parquet(construction_detours, paste0(output_data_location,"construction_detours.parquet"))
+```

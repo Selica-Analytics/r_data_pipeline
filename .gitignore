@@ -2,6 +2,12 @@
 .Rhistory
 .Rapp.history
 
+# Library files
+library/
+
+# data Files
+*.csv
+
 # Session Data files
 .RData
 .RDataTmp
