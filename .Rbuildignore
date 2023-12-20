@@ -1,1 +1,3 @@
 ^dev$
+^r\.data\.pipeline\.Rproj$
+^\.Rproj\.user$

@@ -16,15 +16,15 @@ All commands that you use to use when developing packages...
 fusen::fill_description(
   pkg = here::here(),
   fields = list(
-    Title = "Build A Package From Rmarkdown File",
-    Description = "Use Rmarkdown First method to build your package. Start your package with documentation. Everything can be set from a Rmarkdown file in your project.",
+    Title = "Data Project Pipeline",
+    Description = "Create a data pipeline for the data portal project",
     `Authors@R` = c(
-      person("John", "Doe", email = "john@email.me", role = c("aut", "cre"), comment = c(ORCID = "0000-0000-0000-0000"))
+      person("Chris", "Selig", email = "chris@selica.ca", role = c("aut", "cre"), comment = c(ORCID = "0000-0000-0000-0000"))
     )
   )
 )
 # Define License with use_*_license()
-usethis::use_mit_license("John Doe")
+usethis::use_proprietary_license("Chris Selig")
 ```
 
 # All-in-one function to deploy publicly on GitHub
@@ -114,7 +114,7 @@ fusen::add_flat_template("add")
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly
-fusen::inflate(flat_file = "dev/flat_minimal_package.Rmd", vignette_name = "Minimal")
+fusen::inflate(flat_file = "dev/pipeline.Rmd", vignette_name = "Minimal")
 ```
 
 # Share the package
