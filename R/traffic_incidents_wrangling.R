@@ -11,8 +11,8 @@
 #' @export
 #' 
 construction_detours_wrangling <- function(construction_detours_raw_data) {
-    construction_detours_raw |> 
-    janitor::clean_names() |> 
+    construction_detours_raw |>
+    janitor::clean_names() |>
     mutate(
     start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
     end_dt = lubridate::ymd_hms(end_dt,tz = "Canada/Mountain")
@@ -29,8 +29,8 @@ construction_detours_wrangling <- function(construction_detours_raw_data) {
 #' @export
 
 traffic_incidents_wrangling <- function(traffic_incidents_raw_data) {
-    traffic_incidents_raw |> 
-    janitor::clean_names() |> 
+    traffic_incidents_raw |>
+    janitor::clean_names() |>
     mutate(
     start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
     modified_dt = lubridate::ymd_hms(modified_dt,tz = "Canada/Mountain"),

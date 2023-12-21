@@ -50,10 +50,10 @@ library(readr)
 ## Create Functions 
 
 ```{r examples-download_data, eval = FALSE}
-# traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
-# 
-# # Running the functions
-# download_data(url = traffic_incidents_url, destfile = "00_data/traffic_incidents.csv")
+traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
+
+# Running the functions
+download_data(url = traffic_incidents_url, destfile = "traffic_incidents.csv")
 
 ```
 
@@ -61,8 +61,4 @@ library(readr)
 
 Using the janitor package, clean the names of the columns and using the lubridate package, convert the date columns to date time format. This data wrangling is completed for each of the downloaded data sets.
 
-
-```{r examples-traffic_incidents_wrangling, eval = FALSE}
-
-```
 
