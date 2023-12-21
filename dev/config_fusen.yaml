@@ -1,12 +1,8 @@
 pipeline.rmd:
   path: dev/pipeline.rmd
   state: active
-  R:
-  - R/traffic_incidents_wrangling.R
-  - R/download_data.R
-  tests:
-  - tests/testthat/test-download_data.R
-  - tests/testthat/test-traffic_incidents_wrangling.R
+  R: R/traffic_incidents_wrangling.R
+  tests: tests/testthat/test-traffic_incidents_wrangling.R
   vignettes: vignettes/minimal.Rmd
   inflate:
     flat_file: dev/pipeline.rmd

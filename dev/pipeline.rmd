@@ -35,50 +35,6 @@ library(readr)
 
 ## Create Functions 
 
-```{r, function-download_data}
-#' download_data gets raw data from the YYC Open Data Portal, or really any provided url
-#'
-#' @param url Persistent url to the data
-#' @param destfile Destination to save downloaded file, including the file name
-#' @importFrom utils download.file
-#' @return csv file
-#' @export
-
-download_data <- function(url, destfile) {
-    download.file(
-        url = url, 
-        destfile = paste0("./",destfile),
-        overwrite = TRUE
-        )
-  }
-```
-
-```{r, tests-download_data}
-# Variables used in tests
-traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
-construction_detours_url <- "https://data.calgary.ca/resource/w8zq-79bq.csv"
-
-# Running the functions
-download_data(url = traffic_incidents_url, destfile = "traffic_incidents.csv")
-download_data(url = construction_detours_url, destfile = "construction_detours.csv")
-
-# Testing the functions worked properly
-testthat::expect_true(file.exists("traffic_incidents.csv"))
-testthat::expect_true(file.exists("construction_detours.csv"))
-
-```
-
-```{r, examples-download_data, eval=FALSE}
-traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
-
-# Running the functions
-download_data(url = traffic_incidents_url, destfile = "traffic_incidents.csv")
-
-```
-
-
-## Data Wrangling
-
 Using the janitor package, clean the names of the columns and using the lubridate package, convert the date columns to date time format. This data wrangling is completed for each of the downloaded data sets.
 
 ```{r, function-traffic_incidents_wrangling}
@@ -103,15 +59,16 @@ traffic_incidents_wrangling <- function(traffic_incidents_raw_data) {
 
 ```{r, tests-traffic_incidents_wrangling}
 # traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
-# 
-# # Download data
-# download_data(url = traffic_incidents_url, destfile = "traffic_incidents.csv")
-# 
-# # Load data
-# traffic_incidents_raw <- readr::read_csv("traffic_incidents.csv",show_col_types = FALSE)
+
+# Download data
+# download.file(traffic_incidents_url, "traffic_incidents.csv")
+
+# Load data
+# traffic_incidents_raw <- readr::read_csv(testthat::test_path("testdata","traffic_incidents.csv"),show_col_types = FALSE)
 # 
 # # Run the function
-# traffic_incidents <- traffic_incidents_wrangling(traffic_incidents_raw)
+# traffic_incidents <- readr::read_csv(testthat::test_path("testdata","traffic_incidents.csv"),show_col_types = FALSE) |>  
+#     traffic_incidents_wrangling()
 # 
 # # Test that it worked
 # testthat::expect_true("start_dt" %in% colnames(traffic_incidents))
