@@ -1,0 +1,113 @@
+---
+title: "Download File"
+author: "Chris Selig"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+## Description
+This file is used to download the traffic incidents and construction detours data from the [YYC Open data portal](https://data.calgary.ca/), using the provided API url.
+
+[traffic incidents url](https://data.calgary.ca/resource/35ra-9556.csv)
+[construction detours](https://data.calgary.ca/resource/w8zq-79bq.csv)
+
+Traffic incidents are updated on the Open data portal every 10min
+Construction detours are updated on the Open data portal every day at 3am and 3pm
+
+License/Attribution:  Contains information licensed under the Open Government Licence – City of Calgary.
+
+
+## Load Packages
+
+```{r, development, include=FALSE}
+library(testthat)
+```
+
+```{r, loadPackages, warning=FALSE, message=FALSE}
+library(dplyr)
+library(lubridate)
+library(readr)
+library(janitor)
+library(arrow)
+library(readr)
+```
+
+## Create Functions 
+
+Using the janitor package, clean the names of the columns and using the lubridate package, convert the date columns to date time format. This data wrangling is completed for each of the downloaded data sets.
+
+```{r, function-traffic_incidents_wrangling}
+#' traffic_incidents_wrangling cleans the traffic incidents raw data
+#'
+#' @param traffic_incidents_raw_data Traffic incidents raw data
+#' @details This function cleans the column names and converts the date columns to date time format
+#' @importFrom dplyr mutate
+#' @importFrom janitor clean_names
+#' @return data frame
+#' @export
+
+traffic_incidents_wrangling <- function(traffic_incidents_raw_data) {
+    traffic_incidents_raw |>
+    janitor::clean_names() |>
+    mutate(
+    start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
+    modified_dt = lubridate::ymd_hms(modified_dt,tz = "Canada/Mountain"),
+        )
+}
+```
+
+```{r, tests-traffic_incidents_wrangling}
+# traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
+
+# Download data
+# download.file(traffic_incidents_url, "traffic_incidents.csv")
+
+# Load data
+# traffic_incidents_raw <- readr::read_csv(testthat::test_path("testdata","traffic_incidents.csv"),show_col_types = FALSE)
+# 
+# # Run the function
+# traffic_incidents <- readr::read_csv(testthat::test_path("testdata","traffic_incidents.csv"),show_col_types = FALSE) |>  
+#     traffic_incidents_wrangling()
+# 
+# # Test that it worked
+# testthat::expect_true("start_dt" %in% colnames(traffic_incidents))
+```
+
+
+
+```{r, function-construction_detours_wrangling}
+#' construction_detours_wrangling cleans the traffic incidents raw data
+#'
+#' @param construction_detours_wrangling Construction detours raw data
+#' @details This function cleans the column names and converts the date columns to date time format
+#' @importFrom dplyr mutate
+#' @importFrom janitor clean_names
+#' @importFrom lubridate ymd_hms
+#' @return data frame
+#' @export
+#' 
+construction_detours_wrangling <- function(construction_detours_raw_data) {
+    construction_detours_raw |>
+    janitor::clean_names() |>
+    mutate(
+    start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
+    end_dt = lubridate::ymd_hms(end_dt,tz = "Canada/Mountain")
+        )
+}
+```
+
+```{r, tests-construction_detours_wrangling}
+# construction_detours_url <- "https://data.calgary.ca/resource/w8zq-79bq.csv"
+# # Download data
+# download_data(url = construction_detours_url, destfile = "construction_detours.csv")
+# 
+# # Load data
+# construction_detours_raw <- readr::read_csv("construction_detours.csv")
+# 
+# # Run the function
+# construction_detours <- construction_detours_wrangling(construction_detours_raw)
+# 
+# # Test that it worked
+# testthat::expect_true("start_dt" %in% colnames(construction_detours))
+```

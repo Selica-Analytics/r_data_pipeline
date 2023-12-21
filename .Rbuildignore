@@ -1,0 +1,10 @@
+^dev$
+^r\.data\.pipeline\.Rproj$
+^\.Rproj\.user$
+^r_data_pipeline\.Rproj$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
+^\.github$
+^codecov\.yml$
