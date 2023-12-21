@@ -62,3 +62,7 @@ download_data(url = traffic_incidents_url, destfile = "00_data/traffic_incidents
 Using the janitor package, clean the names of the columns and using the lubridate package, convert the date columns to date time format. This data wrangling is completed for each of the downloaded data sets.
 
 
+```{r examples-traffic_incidents_wrangling, eval = FALSE}
+
+```
+

@@ -9,6 +9,6 @@ download_data(url = traffic_incidents_url, destfile = "../00_data/traffic_incide
 download_data(url = construction_detours_url, destfile = "../00_data/construction_detours.csv")
 
 # Testing the functions worked properly
-testthat::expect_true(file.exists("00_data/traffic_incidents.csv"))
-testthat::expect_true(file.exists("00_data/construction_detours.csv"))
+testthat::expect_true(file.exists("../00_data/traffic_incidents.csv"))
+testthat::expect_true(file.exists("../00_data/construction_detours.csv"))
 
