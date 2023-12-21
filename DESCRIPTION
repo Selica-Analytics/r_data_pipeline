@@ -13,6 +13,7 @@ Imports:
     utils
 Suggests: 
     arrow,
+    covr,
     knitr,
     readr,
     rmarkdown,
