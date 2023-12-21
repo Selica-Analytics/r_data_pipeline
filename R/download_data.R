@@ -8,10 +8,10 @@
 #' @return csv file
 #' @export
 #' @examples
-#' traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
-#'
-#' # Running the functions
-#' download_data(url = traffic_incidents_url, destfile = "00_data/traffic_incidents.csv")
+#' # traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
+#' # 
+#' # # Running the functions
+#' # download_data(url = traffic_incidents_url, destfile = "00_data/traffic_incidents.csv")
 #'
 
 download_data <- function(url, destfile) {

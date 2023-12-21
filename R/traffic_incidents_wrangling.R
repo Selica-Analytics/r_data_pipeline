@@ -25,7 +25,6 @@ construction_detours_wrangling <- function(construction_detours_raw_data) {
 #' @details This function cleans the column names and converts the date columns to date time format
 #' @importFrom dplyr mutate
 #' @importFrom janitor clean_names
-#' @importFrom lubridate ymd_hms
 #' @return data frame
 #' @export
 

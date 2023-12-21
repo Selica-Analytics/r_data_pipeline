@@ -2,11 +2,11 @@ pipeline.rmd:
   path: dev/pipeline.rmd
   state: active
   R:
-  - R/traffic_incidents_wrangling.R
   - R/download_data.R
+  - R/data-wrangling.R
   tests:
   - tests/testthat/test-download_data.R
-  - tests/testthat/test-traffic_incidents_wrangling.R
+  - tests/testthat/test-data-wrangling.R
   vignettes: vignettes/minimal.Rmd
   inflate:
     flat_file: dev/pipeline.rmd
@@ -14,4 +14,4 @@ pipeline.rmd:
     open_vignette: true
     check: true
     document: true
-    overwrite: ask
+    overwrite: 'yes'

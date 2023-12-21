@@ -21,7 +21,7 @@ fusen::fill_description(
     `Authors@R` = c(
       person("Chris", "Selig", email = "chris@selica.ca", role = c("aut", "cre"), comment = c(ORCID = "0000-0000-0000-0000"))
     )
-  )
+  ),overwrite = TRUE
 )
 # Define License with use_*_license()
 usethis::use_proprietary_license("Chris Selig")
@@ -114,7 +114,7 @@ fusen::add_flat_template("add")
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly
-fusen::inflate(flat_file = "dev/pipeline.Rmd", vignette_name = "Minimal")
+fusen::inflate(flat_file = "dev/pipeline.Rmd", vignette_name = "Minimal",overwrite = TRUE)
 ```
 
 # Share the package

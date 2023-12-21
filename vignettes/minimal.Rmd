@@ -36,7 +36,7 @@ License/Attribution:  Contains information licensed under the Open Government Li
 
 
 
-### Load Packages
+## Load Packages
 
 ```{r loadPackages, warning = FALSE, message = FALSE}
 library(dplyr)
@@ -47,13 +47,13 @@ library(arrow)
 library(readr)
 ```
 
-### Create Functions 
+## Create Functions 
 
 ```{r examples-download_data, eval = FALSE}
-traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
-
-# Running the functions
-download_data(url = traffic_incidents_url, destfile = "00_data/traffic_incidents.csv")
+# traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
+# 
+# # Running the functions
+# download_data(url = traffic_incidents_url, destfile = "00_data/traffic_incidents.csv")
 
 ```
 
