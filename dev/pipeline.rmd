@@ -48,6 +48,12 @@ Using the janitor package, clean the names of the columns and using the lubridat
 #' @export
 
 traffic_incidents_wrangling <- function(data) {
+
+    stopifnot("`data` must be a data frame" =
+        inherits(data, "data.frame"))
+    print("Dataframe not provided")
+
+    
     data |>
     janitor::clean_names() |>
     mutate(
@@ -58,23 +64,21 @@ traffic_incidents_wrangling <- function(data) {
 ```
 
 ```{r, tests-traffic_incidents_wrangling}
-# traffic_incidents_url <- "https://data.calgary.ca/resource/35ra-9556.csv"
+url <- "https://data.calgary.ca/resource/35ra-9556.csv"
 
 # Download data
-# download.file(traffic_incidents_url, "traffic_incidents.csv")
+# download.file(url,testthat::test_path("testdata","traffic_incidents.csv"))
+raw_data <- readr::read_csv(url,show_col_types = FALSE)
 
-# Load data
-# traffic_incidents_raw <- readr::read_csv(testthat::test_path("testdata","traffic_incidents.csv"),show_col_types = FALSE)
-# 
-# # Run the function
-# traffic_incidents <- readr::read_csv(testthat::test_path("testdata","traffic_incidents.csv"),show_col_types = FALSE) |>  
-#     traffic_incidents_wrangling()
-# 
-# # Test that it worked
-# testthat::expect_true("start_dt" %in% colnames(traffic_incidents))
+# Run the function
+traffic_incidents <- traffic_incidents_wrangling(raw_data)
+
+ # Tests
+testthat::test_that("Check if cleaning names worked", {
+  expect_true("start_dt" %in% colnames(traffic_incidents))
+})
+
 ```
-
-
 
 ```{r, function-construction_detours_wrangling}
 #' construction_detours_wrangling cleans the traffic incidents raw data
@@ -88,6 +92,11 @@ traffic_incidents_wrangling <- function(data) {
 #' @export
 #' 
 construction_detours_wrangling <- function(data) {
+    
+    stopifnot("`data` must be a data frame" =
+        inherits(data, "data.frame"))
+    print("Dataframe not provided")
+
     data |>
     janitor::clean_names() |>
     mutate(
@@ -98,16 +107,18 @@ construction_detours_wrangling <- function(data) {
 ```
 
 ```{r, tests-construction_detours_wrangling}
-# construction_detours_url <- "https://data.calgary.ca/resource/w8zq-79bq.csv"
-# # Download data
-# download_data(url = construction_detours_url, destfile = "construction_detours.csv")
-# 
-# # Load data
-# construction_detours_raw <- readr::read_csv("construction_detours.csv")
-# 
-# # Run the function
-# construction_detours <- construction_detours_wrangling(construction_detours_raw)
-# 
-# # Test that it worked
-# testthat::expect_true("start_dt" %in% colnames(construction_detours))
+url <- "https://data.calgary.ca/resource/w8zq-79bq.csv"
+
+# Download data
+#download.file(url,testthat::test_path("testdata","construction_detours.csv"))
+raw_data <- readr::read_csv(url,show_col_types = FALSE)
+
+# Run the function
+construction_detours <- construction_detours_wrangling(raw_data)
+
+ # Tests
+testthat::test_that("Check if cleaning names worked", {
+  expect_true("start_dt" %in% colnames(construction_detours))
+})
+
 ```

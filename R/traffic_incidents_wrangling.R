@@ -10,6 +10,12 @@
 #' @export
 
 traffic_incidents_wrangling <- function(data) {
+
+    stopifnot("`data` must be a data frame" =
+        inherits(data, "data.frame"))
+    print("Dataframe not provided")
+
+    
     data |>
     janitor::clean_names() |>
     mutate(
@@ -29,6 +35,11 @@ traffic_incidents_wrangling <- function(data) {
 #' @export
 #' 
 construction_detours_wrangling <- function(data) {
+    
+    stopifnot("`data` must be a data frame" =
+        inherits(data, "data.frame"))
+    print("Dataframe not provided")
+
     data |>
     janitor::clean_names() |>
     mutate(
