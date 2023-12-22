@@ -4,7 +4,7 @@
 \alias{traffic_incidents_wrangling}
 \title{traffic_incidents_wrangling cleans the traffic incidents raw data}
 \usage{
-traffic_incidents_wrangling(traffic_incidents_raw_data)
+traffic_incidents_wrangling(data)
 }
 \arguments{
 \item{traffic_incidents_raw_data}{Traffic incidents raw data}

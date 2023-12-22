@@ -4,7 +4,7 @@
 \alias{construction_detours_wrangling}
 \title{construction_detours_wrangling cleans the traffic incidents raw data}
 \usage{
-construction_detours_wrangling(construction_detours_raw_data)
+construction_detours_wrangling(data)
 }
 \arguments{
 \item{construction_detours_wrangling}{Construction detours raw data}

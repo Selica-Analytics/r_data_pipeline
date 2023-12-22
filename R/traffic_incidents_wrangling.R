@@ -9,8 +9,8 @@
 #' @return data frame
 #' @export
 
-traffic_incidents_wrangling <- function(traffic_incidents_raw_data) {
-    traffic_incidents_raw |>
+traffic_incidents_wrangling <- function(data) {
+    data |>
     janitor::clean_names() |>
     mutate(
     start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
@@ -28,8 +28,8 @@ traffic_incidents_wrangling <- function(traffic_incidents_raw_data) {
 #' @return data frame
 #' @export
 #' 
-construction_detours_wrangling <- function(construction_detours_raw_data) {
-    construction_detours_raw |>
+construction_detours_wrangling <- function(data) {
+    data |>
     janitor::clean_names() |>
     mutate(
     start_dt = lubridate::ymd_hms(start_dt,tz = "Canada/Mountain"),
