@@ -1,22 +1,37 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
 
 # r.data.pipeline
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/Selica-Analytics/r_data_pipeline/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Selica-Analytics/r_data_pipeline?branch=main)
+
+[![Codecov test
+coverage](https://codecov.io/gh/Selica-Analytics/r_data_pipeline/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Selica-Analytics/r_data_pipeline?branch=main)
 <!-- badges: end -->
 
-The goal of r.data.pipeline is to ...
+The goal of r.data.pipeline is to make data processing of files for the
+YYC Traffic Incidents and Construction Detours.
+
+Package cleans the traffic incidents and construction detours data from
+the [YYC Open data portal](https://data.calgary.ca/), using the provided
+API url.
+
+[traffic incidents url](https://data.calgary.ca/resource/35ra-9556.csv)
+[construction detours](https://data.calgary.ca/resource/w8zq-79bq.csv)
+
+Traffic incidents are updated on the Open data portal every 10min
+Construction detours are updated on the Open data portal every day at
+3am and 3pm
+
+## Data License
+
+License/Attribution: Contains information licensed under the Open
+Government Licence – City of Calgary.
 
 ## Installation
 
-You can install the development version of r.data.pipeline from [GitHub](https://github.com/) with:
+You can install the development version of r.data.pipeline from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -25,39 +40,6 @@ devtools::install_github("Selica-Analytics/r_data_pipeline")
 
 ## Documentation
 
-Full documentation website on: https://git@github.com:Selica-Analytics/r_data_pipeline.github.io/git@github.com:Selica-Analytics/r_data_pipeline
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-
-```r
-library(r.data.pipeline)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-
-```r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<div class="figure">
-<img src="man/figures/README-pressure-1.png" alt="plot of chunk pressure" width="100%" />
-<p class="caption">plot of chunk pressure</p>
-</div>
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+Full documentation website on: <a
+href="https://git@github.com:Selica-Analytics/r_data_pipeline.github.io/git@github.com:Selica-Analytics/r_data_pipeline"
+class="uri">https://git@github.com:Selica-Analytics/r_data_pipeline.github.io/git@github.com:Selica-Analytics/r_data_pipeline</a>
